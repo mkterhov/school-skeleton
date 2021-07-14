@@ -1,0 +1,15 @@
+{
+    "name": "raresmoldovan/school",
+    "description": "An application for a school",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Rares Moldovan",
+            "email": "raresmldvn31@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"School\\": "src/"}
+    }
+}
