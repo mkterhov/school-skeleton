@@ -4,15 +4,14 @@ require __DIR__ . '/vendor/autoload.php';
 use School\Dto\RegisterUserDto;
 use School\Repository\UserRepository;
 use School\Service\RegisterUser;
-use School\Validator\ConfirmPasswordValidator;
-use School\Validator\DateValidator;
-use School\Validator\FirstNameValidator;
-use School\Validator\LastNameValidator;
-use School\Validator\RidiculousPasswordValidator;
-use School\Validator\StrongPasswordValidator;
-use School\Validator\StudentEmailValidator;
-use School\Validator\TeacherEmailValidator;
 use School\Validator\ValidatorCollection;
+use School\Validator\DateValidator\DateValidator;
+use School\Validator\EmailValidator\StudentEmailValidator;
+use School\Validator\NameValidator\FirstNameValidator;
+use School\Validator\NameValidator\LastNameValidator;
+use School\Validator\PasswordValidator\ConfirmPasswordValidator;
+use School\Validator\PasswordValidator\RidiculousPasswordValidator;
+
 
 $configuration = require __DIR__ . '/config/config.php';
 

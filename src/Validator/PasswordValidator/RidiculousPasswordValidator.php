@@ -1,7 +1,7 @@
 <?php
 
 
-namespace School\Validator;
+namespace School\Validator\PasswordValidator;
 
 
 use School\Dto\RegisterUserDto;

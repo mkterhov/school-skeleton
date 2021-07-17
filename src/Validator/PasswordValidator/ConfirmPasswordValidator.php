@@ -1,10 +1,11 @@
 <?php
 
 
-namespace School\Validator;
+namespace School\Validator\PasswordValidator;
 
 
 use School\Dto\RegisterUserDto;
+use School\Validator\ValidatorInterface;
 
 class ConfirmPasswordValidator implements ValidatorInterface
 {

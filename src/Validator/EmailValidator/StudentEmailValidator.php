@@ -1,10 +1,11 @@
 <?php
 
 
-namespace School\Validator;
+namespace School\Validator\EmailValidator;
 
 
 use School\Dto\RegisterUserDto;
+use School\Validator\ValidatorInterface;
 
 class StudentEmailValidator implements ValidatorInterface
 {

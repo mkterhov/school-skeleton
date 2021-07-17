@@ -1,10 +1,11 @@
 <?php
 
 
-namespace School\Validator;
+namespace School\Validator\NameValidator;
 
 
 use School\Dto\RegisterUserDto;
+use School\Validator\ValidatorInterface;
 
 class LastNameValidator implements ValidatorInterface
 {

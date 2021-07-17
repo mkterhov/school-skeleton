@@ -1,12 +1,13 @@
 <?php
 
 
-namespace School\Validator;
+namespace School\Validator\PasswordValidator;
 
 
 use School\Dto\RegisterUserDto;
+use School\Validator\ValidatorInterface;
 
-class StrongPasswordValidator implements ValidatorInterface
+class MediumPasswordValidator implements ValidatorInterface
 {
     protected string $pattern;
 
@@ -15,7 +16,7 @@ class StrongPasswordValidator implements ValidatorInterface
      */
     public function __construct()
     {
-        $this->pattern = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])\S{10,}$/';
+        $this->pattern = '/^(?=[A-Z]+)\w{7,}/';
     }
 
     /**
