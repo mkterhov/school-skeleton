@@ -5,6 +5,7 @@ use School\Dto\RegisterUserDto;
 use School\Repository\UserRepository;
 use School\Service\RegisterUser;
 use School\Validator\ValidatorCollection;
+use School\Validator\WeakPasswordValidator;
 
 $configuration = require __DIR__ . '/config/config.php';
 //Construct the dto #done
@@ -31,12 +32,19 @@ if (!empty($paramsMissing)) {
 }
 try {
     $userDto = RegisterUserDto::createFromGlobals();
-
+    //Instantiate all needed validators based on configuration
     $validatorCollection = new ValidatorCollection();
+    $validatorCollection->addValidator(new WeakPasswordValidator());
+    foreach ($validatorCollection as $validator) {
+        print_r(get_class($validator) . " " . $validator->validate($userDto) . PHP_EOL);
+    }
+    //Instantiate the repo
     $userRepository = new UserRepository();
 
+    //Instantiate the register user service and call it
     $registerUser = new RegisterUser($validatorCollection, $userRepository);
 
+    //Send back the error/succes response in JSON format
     header('HTTP/1.1 201 Created');
     echo json_encode($registerUser->registerUser($userDto));
 
@@ -46,11 +54,3 @@ try {
     echo json_encode(['error' => ['message' => $errorMessage]]);
     exit(0);
 }
-
-
-//Instantiate all needed validators based on configuration
-
-
-//Instantiate the repo
-//Instantiate the register user service and call it
-//Send back the error/succes response in JSON format
