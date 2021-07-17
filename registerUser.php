@@ -4,6 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 use School\Dto\RegisterUserDto;
 use School\Repository\UserRepository;
 use School\Service\RegisterUser;
+use School\Validator\EmailValidator\TeacherEmailValidator;
 use School\Validator\IdentifierValidator\StudentIdentifierValidator;
 use School\Validator\IdentifierValidator\TeacherIdentifierValidator;
 use School\Validator\PasswordValidator\PasswordValidatorFactory;
@@ -13,7 +14,6 @@ use School\Validator\EmailValidator\StudentEmailValidator;
 use School\Validator\NameValidator\FirstNameValidator;
 use School\Validator\NameValidator\LastNameValidator;
 use School\Validator\PasswordValidator\ConfirmPasswordValidator;
-use School\Validator\PasswordValidator\RidiculousPasswordValidator;
 
 
 $configuration = require __DIR__ . '/config/config.php';
@@ -46,15 +46,16 @@ try {
     $validatorCollection = new ValidatorCollection();
     $validatorCollection->addValidator(PasswordValidatorFactory::createPasswordValidator($configuration['PASSWORD_STRENGTH']));
     $validatorCollection->addValidator(new ConfirmPasswordValidator());
-    $validatorCollection->addValidator(new StudentEmailValidator($configuration['SCHOOL_PROVIDER_REGEX']));
+    $emailValidator = $userDto->isTeacher ? new TeacherEmailValidator($configuration['SCHOOL_PROVIDER_REGEX']) : new StudentEmailValidator($configuration['SCHOOL_PROVIDER_REGEX']);
+    $validatorCollection->addValidator($emailValidator);
     $validatorCollection->addValidator(new LastNameValidator());
     $validatorCollection->addValidator(new FirstNameValidator());
     $validatorCollection->addValidator(new DateValidator($configuration['DATE_DIFFERENCE_IN_DAYS']));
-//    $validatorCollection->addValidator(new StudentIdentifierValidator());
-    $validatorCollection->addValidator(new TeacherIdentifierValidator());
+    $identifierValidator = $userDto->isTeacher ? new TeacherIdentifierValidator() : new StudentIdentifierValidator();
+    $validatorCollection->addValidator($identifierValidator);
 
     foreach ($validatorCollection as $validator) {
-        print_r(get_class($validator). " ");
+        print_r(get_class($validator) . " ");
         var_dump($validator->validate($userDto));
     }
     //Instantiate the repo

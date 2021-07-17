@@ -15,7 +15,6 @@ class TeacherIdentifierValidator implements ValidatorInterface
     public function __construct()
     {
         $this->pattern = '/^(' . implode('|', $this->array) . ')-\d{4}-\w{1,3}$/';
-
     }
 
     /**
@@ -23,7 +22,6 @@ class TeacherIdentifierValidator implements ValidatorInterface
      */
     public function validate(RegisterUserDto $dto): bool
     {
-        var_dump($this->pattern);
         return preg_match($this->pattern, $dto->schoolIdentifier) === 1;
     }
 }
