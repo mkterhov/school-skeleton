@@ -4,6 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 use School\Dto\RegisterUserDto;
 use School\Repository\UserRepository;
 use School\Service\RegisterUser;
+use School\Service\ValidatorCollectionService;
 use School\Validator\EmailValidator\TeacherEmailValidator;
 use School\Validator\IdentifierValidator\StudentIdentifierValidator;
 use School\Validator\IdentifierValidator\TeacherIdentifierValidator;
@@ -43,16 +44,8 @@ try {
     //Construct the dto #done
     $userDto = RegisterUserDto::createFromGlobals();
     //Instantiate all needed validators based on configuration
-    $validatorCollection = new ValidatorCollection();
-    $validatorCollection->addValidator(PasswordValidatorFactory::createPasswordValidator($configuration['PASSWORD_STRENGTH']));
-    $validatorCollection->addValidator(new ConfirmPasswordValidator());
-    $emailValidator = $userDto->isTeacher ? new TeacherEmailValidator($configuration['SCHOOL_PROVIDER_REGEX']) : new StudentEmailValidator($configuration['SCHOOL_PROVIDER_REGEX']);
-    $validatorCollection->addValidator($emailValidator);
-    $validatorCollection->addValidator(new LastNameValidator());
-    $validatorCollection->addValidator(new FirstNameValidator());
-    $validatorCollection->addValidator(new DateValidator($configuration['DATE_DIFFERENCE_IN_DAYS']));
-    $identifierValidator = $userDto->isTeacher ? new TeacherIdentifierValidator() : new StudentIdentifierValidator();
-    $validatorCollection->addValidator($identifierValidator);
+    //todo move the $userDto out of CreateValidators logic, temp solution
+    $validatorCollection = ValidatorCollectionService::createValidators($configuration,$userDto);
 
     foreach ($validatorCollection as $validator) {
         print_r(get_class($validator) . " ");
