@@ -5,6 +5,7 @@ use School\Dto\RegisterUserDto;
 use School\Repository\UserRepository;
 use School\Service\RegisterUser;
 use School\Validator\ConfirmPasswordValidator;
+use School\Validator\RidiculousPasswordValidator;
 use School\Validator\ValidatorCollection;
 use School\Validator\WeakPasswordValidator;
 
@@ -36,8 +37,9 @@ try {
     $userDto = RegisterUserDto::createFromGlobals();
     //Instantiate all needed validators based on configuration
     $validatorCollection = new ValidatorCollection();
-    $validatorCollection->addValidator(new WeakPasswordValidator());
+    $validatorCollection->addValidator(new RidiculousPasswordValidator());
     $validatorCollection->addValidator(new ConfirmPasswordValidator());
+
     foreach ($validatorCollection as $validator) {
         print_r(get_class($validator) . " " . $validator->validate($userDto) . PHP_EOL);
     }
