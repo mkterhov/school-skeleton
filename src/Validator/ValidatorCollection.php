@@ -1,4 +1,5 @@
 <?php
+
 namespace School\Validator;
 
 class ValidatorCollection implements \Iterator, \Countable

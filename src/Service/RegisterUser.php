@@ -1,8 +1,10 @@
 <?php
 
+namespace School\Service;
+
+use School\Repository\UserRepository;
 use School\Validator\ValidatorCollection;
 use School\Dto\RegisterUserDto;
-use School\Repository\UserRepository;
 
 class RegisterUser
 {
@@ -12,7 +14,8 @@ class RegisterUser
     public function __construct(
         ValidatorCollection $validators,
         UserRepository $userRepository
-    ) {
+    )
+    {
         $this->validators = $validators;
         $this->userRepository = $userRepository;
     }
@@ -22,6 +25,6 @@ class RegisterUser
      */
     public function registerUser(RegisterUserDto $dto): array
     {
-        return [];
+        return ['success' => ['message' => 'User created']];
     }
 }

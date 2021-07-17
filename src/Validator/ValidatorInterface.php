@@ -1,4 +1,5 @@
 <?php
+
 namespace School\Validator;
 
 use School\Dto\RegisterUserDto;
