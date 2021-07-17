@@ -5,6 +5,8 @@ use School\Dto\RegisterUserDto;
 use School\Repository\UserRepository;
 use School\Service\RegisterUser;
 use School\Validator\ConfirmPasswordValidator;
+use School\Validator\FirstNameValidator;
+use School\Validator\LastNameValidator;
 use School\Validator\RidiculousPasswordValidator;
 use School\Validator\StrongPasswordValidator;
 use School\Validator\StudentEmailValidator;
@@ -42,6 +44,8 @@ try {
     $validatorCollection->addValidator(new RidiculousPasswordValidator());
     $validatorCollection->addValidator(new ConfirmPasswordValidator());
     $validatorCollection->addValidator(new StudentEmailValidator($configuration['SCHOOL_PROVIDER_REGEX']));
+    $validatorCollection->addValidator(new LastNameValidator());
+    $validatorCollection->addValidator(new FirstNameValidator());
 
     foreach ($validatorCollection as $validator) {
         print_r(get_class($validator). " ");
