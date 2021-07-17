@@ -4,6 +4,8 @@ require __DIR__ . '/vendor/autoload.php';
 use School\Dto\RegisterUserDto;
 use School\Repository\UserRepository;
 use School\Service\RegisterUser;
+use School\Validator\IdentifierValidator\StudentIdentifierValidator;
+use School\Validator\IdentifierValidator\TeacherIdentifierValidator;
 use School\Validator\ValidatorCollection;
 use School\Validator\DateValidator\DateValidator;
 use School\Validator\EmailValidator\StudentEmailValidator;
@@ -47,6 +49,8 @@ try {
     $validatorCollection->addValidator(new LastNameValidator());
     $validatorCollection->addValidator(new FirstNameValidator());
     $validatorCollection->addValidator(new DateValidator($configuration['DATE_DIFFERENCE_IN_DAYS']));
+//    $validatorCollection->addValidator(new StudentIdentifierValidator());
+    $validatorCollection->addValidator(new TeacherIdentifierValidator());
 
     foreach ($validatorCollection as $validator) {
         print_r(get_class($validator). " ");
