@@ -7,6 +7,8 @@ use School\Service\RegisterUser;
 use School\Validator\ConfirmPasswordValidator;
 use School\Validator\RidiculousPasswordValidator;
 use School\Validator\StrongPasswordValidator;
+use School\Validator\StudentEmailValidator;
+use School\Validator\TeacherEmailValidator;
 use School\Validator\ValidatorCollection;
 
 $configuration = require __DIR__ . '/config/config.php';
@@ -39,8 +41,10 @@ try {
     $validatorCollection = new ValidatorCollection();
     $validatorCollection->addValidator(new RidiculousPasswordValidator());
     $validatorCollection->addValidator(new ConfirmPasswordValidator());
+    $validatorCollection->addValidator(new StudentEmailValidator($configuration['SCHOOL_PROVIDER_REGEX']));
 
     foreach ($validatorCollection as $validator) {
+        print_r(get_class($validator). " ");
         var_dump($validator->validate($userDto));
     }
     //Instantiate the repo
