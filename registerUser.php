@@ -20,7 +20,7 @@ $paramsNeeded = [
     'email', 'school_identifier',
     'first_name', 'last_name',
     'confirm_password', 'password',
-    'start_date', 'entry_date'
+    'start_date', 'entry_date', 'is_teacher'
 ];
 $paramsGiven = array_keys($_POST);
 

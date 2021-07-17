@@ -12,6 +12,7 @@ class RegisterUserDto
     public string $password;
     public string $entryDate;
     public string $startDate;
+    public string $isTeacher;
 
     /**
      * @throws \Exception
@@ -21,6 +22,7 @@ class RegisterUserDto
         $registerDto = new self();
 
         try {
+            $registerDto->is_teacher = $_POST['is_teacher'];
             $registerDto->firstName = $_POST['first_name'];
             $registerDto->email = $_POST['email'];
             $registerDto->lastName = $_POST['last_name'];
