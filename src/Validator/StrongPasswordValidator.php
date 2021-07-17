@@ -15,7 +15,7 @@ class StrongPasswordValidator implements ValidatorInterface
      */
     public function __construct()
     {
-        $this->pattern = '\w{8,}[A-Z]{1,}[0-9]{1,}[^a-zA-Z0-9_\s]{1,}';
+        $this->pattern = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])\S{10,}$/';
     }
 
     /**

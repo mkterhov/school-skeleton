@@ -15,7 +15,7 @@ class MediumPasswordValidator implements ValidatorInterface
      */
     public function __construct()
     {
-        $this->pattern = '/^\w{8,}[A-Z]{1,}/';
+        $this->pattern = '/^(?=[A-Z]+)\w{7,}/';
     }
 
     /**

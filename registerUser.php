@@ -6,8 +6,8 @@ use School\Repository\UserRepository;
 use School\Service\RegisterUser;
 use School\Validator\ConfirmPasswordValidator;
 use School\Validator\RidiculousPasswordValidator;
+use School\Validator\StrongPasswordValidator;
 use School\Validator\ValidatorCollection;
-use School\Validator\WeakPasswordValidator;
 
 $configuration = require __DIR__ . '/config/config.php';
 
@@ -41,7 +41,7 @@ try {
     $validatorCollection->addValidator(new ConfirmPasswordValidator());
 
     foreach ($validatorCollection as $validator) {
-        print_r(get_class($validator) . " " . $validator->validate($userDto) . PHP_EOL);
+        var_dump($validator->validate($userDto));
     }
     //Instantiate the repo
     $userRepository = new UserRepository();
