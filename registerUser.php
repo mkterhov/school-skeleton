@@ -6,6 +6,7 @@ use School\Repository\UserRepository;
 use School\Service\RegisterUser;
 use School\Validator\IdentifierValidator\StudentIdentifierValidator;
 use School\Validator\IdentifierValidator\TeacherIdentifierValidator;
+use School\Validator\PasswordValidator\PasswordValidatorFactory;
 use School\Validator\ValidatorCollection;
 use School\Validator\DateValidator\DateValidator;
 use School\Validator\EmailValidator\StudentEmailValidator;
@@ -43,7 +44,7 @@ try {
     $userDto = RegisterUserDto::createFromGlobals();
     //Instantiate all needed validators based on configuration
     $validatorCollection = new ValidatorCollection();
-    $validatorCollection->addValidator(new RidiculousPasswordValidator());
+    $validatorCollection->addValidator(PasswordValidatorFactory::createPasswordValidator($configuration['PASSWORD_STRENGTH']));
     $validatorCollection->addValidator(new ConfirmPasswordValidator());
     $validatorCollection->addValidator(new StudentEmailValidator($configuration['SCHOOL_PROVIDER_REGEX']));
     $validatorCollection->addValidator(new LastNameValidator());
@@ -68,7 +69,7 @@ try {
 
 } catch (Exception $e) {
     header('HTTP/1.1 500 Bad Method');
-    $errorMessage = 'Whoops! Something went wrong on our side :/';
+    $errorMessage = 'Whoops! ' . $e->getMessage();
     echo json_encode(['error' => ['message' => $errorMessage]]);
     exit(0);
 }
