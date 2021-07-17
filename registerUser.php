@@ -4,16 +4,17 @@ require __DIR__ . '/vendor/autoload.php';
 use School\Dto\RegisterUserDto;
 use School\Repository\UserRepository;
 use School\Service\RegisterUser;
+use School\Validator\ConfirmPasswordValidator;
 use School\Validator\ValidatorCollection;
 use School\Validator\WeakPasswordValidator;
 
 $configuration = require __DIR__ . '/config/config.php';
-//Construct the dto #done
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('HTTP/1.1 405 Method Not Allowed');
     exit(0);
 }
+
 $paramsNeeded = [
     'email', 'school_identifier',
     'first_name', 'last_name',
@@ -31,10 +32,12 @@ if (!empty($paramsMissing)) {
     exit(0);
 }
 try {
+    //Construct the dto #done
     $userDto = RegisterUserDto::createFromGlobals();
     //Instantiate all needed validators based on configuration
     $validatorCollection = new ValidatorCollection();
     $validatorCollection->addValidator(new WeakPasswordValidator());
+    $validatorCollection->addValidator(new ConfirmPasswordValidator());
     foreach ($validatorCollection as $validator) {
         print_r(get_class($validator) . " " . $validator->validate($userDto) . PHP_EOL);
     }
