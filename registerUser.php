@@ -5,8 +5,6 @@ use School\Dto\RegisterDtoValidatorCollection;
 use School\Dto\RegisterUserDto;
 use School\Repository\UserRepository;
 use School\Service\RegisterUser;
-use School\Service\ValidatorService;
-use School\Service\ValidatorServiceStudent;
 
 
 $configuration = require __DIR__ . '/config/config.php';

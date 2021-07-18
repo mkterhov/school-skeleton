@@ -8,7 +8,7 @@ use School\Dto\RegisterUserDto;
 use School\Validator\ValidationException;
 use School\Validator\ValidatorCollection;
 
-class ValidatorService implements ValidatorServiceInterface
+class RegisterUserValidatorService implements ValidatorServiceInterface
 {
     public ValidatorCollection $validatorCollection;
     protected RegisterUserDto $userDto;
