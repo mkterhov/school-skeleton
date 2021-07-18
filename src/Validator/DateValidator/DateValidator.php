@@ -5,6 +5,7 @@ namespace School\Validator\DateValidator;
 
 
 use DateTime;
+use Exception;
 use School\Dto\RegisterUserDto;
 use School\Validator\AbstractValidator;
 use School\Validator\ValidationException;
@@ -34,7 +35,7 @@ class DateValidator extends AbstractValidator
             $interval->format("%r%H:%i:%s");
             $differenceDays = $interval->invert ? -$interval->days : $interval->days;
             return $differenceDays >= $this->dateDifferenceInDays;
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             throw new ValidationException("Problem with the format of the entry date or start date!");
         }
     }

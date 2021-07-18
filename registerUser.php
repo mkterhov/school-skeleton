@@ -22,7 +22,7 @@ $paramsMissing = array_diff(RegisterUserDto::requestParams, $paramsGiven);
 if (!empty($paramsMissing)) {
     header('HTTP/1.1 400 Bad Method');
     $errorMessage = sprintf('Provide the missing fields: %s', implode(', ', $paramsMissing));
-    echo json_encode(['error' => ['message' => $errorMessage]]);
+    echo json_encode(['error' => ['message' => $errorMessage]], JSON_THROW_ON_ERROR);
     exit(0);
 }
 try {
@@ -39,10 +39,10 @@ try {
     $registerUser = new RegisterUser($userDtoValidators, $userRepository);
 
     //Send back the error/succes response in JSON format
-    echo json_encode($registerUser->registerUser($userDto));
+    echo json_encode($registerUser->registerUser($userDto), JSON_THROW_ON_ERROR);
 } catch (Exception $e) {
     header('HTTP/1.1 500 Internal Server Error');
     $errorMessage = 'Whoops! ' . $e->getMessage();
-    echo json_encode(['error' => ['message' => $errorMessage]]);
+    echo json_encode(['error' => ['message' => $errorMessage]], JSON_THROW_ON_ERROR);
     exit(0);
 }

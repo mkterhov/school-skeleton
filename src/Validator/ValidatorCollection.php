@@ -17,7 +17,7 @@ class ValidatorCollection implements \Iterator, \Countable
 
     public function addValidator(ValidatorInterface $validator): self
     {
-        array_push($this->validators, $validator);
+        $this->validators[] = $validator;
         return new self($this->validators);
     }
 
@@ -26,7 +26,7 @@ class ValidatorCollection implements \Iterator, \Countable
         if (!in_array($validator, $this->validators, true)) {
             return $this;
         }
-        array_filter($this->validators, function ($val) use ($validator) {
+        array_filter($this->validators, static function ($val) use ($validator) {
             return $validator === $val;
         });
         return new self($this->validators);

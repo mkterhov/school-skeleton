@@ -4,7 +4,9 @@
 namespace School\Validator;
 
 
-class ValidationException extends \Exception
+use Exception;
+
+class ValidationException extends Exception
 {
 
 }

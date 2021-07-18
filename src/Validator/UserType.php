@@ -6,6 +6,6 @@ namespace School\Validator;
 
 class UserType
 {
-    const TEACHER = "TEACHER";
-    const STUDENT = "STUDENT";
+    public const TEACHER = "TEACHER";
+    public const STUDENT = "STUDENT";
 }

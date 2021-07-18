@@ -6,9 +6,9 @@ namespace School\Validator\PasswordValidator;
 
 class PasswordStrength
 {
-    const WEAK='Weak';
-    const MEDIUM='Medium';
-    const STRONG='Strong';
-    const RIDICULOUS='Ridiculous';
-    const PASSWORD_VALIDATOR = 'PasswordValidator';
+    public const WEAK='Weak';
+    public const MEDIUM='Medium';
+    public const STRONG='Strong';
+    public const RIDICULOUS='Ridiculous';
+    public const PASSWORD_VALIDATOR = 'PasswordValidator';
 }

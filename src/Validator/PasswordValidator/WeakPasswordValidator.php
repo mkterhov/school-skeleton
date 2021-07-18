@@ -6,7 +6,6 @@ namespace School\Validator\PasswordValidator;
 
 use School\Dto\RegisterUserDto;
 use School\Validator\AbstractValidator;
-use School\Validator\ValidatorInterface;
 
 class WeakPasswordValidator extends AbstractValidator
 {

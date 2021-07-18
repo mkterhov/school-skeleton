@@ -2,9 +2,12 @@
 
 namespace School\Dto;
 
+use Exception;
+use TypeError;
+
 class RegisterUserDto
 {
-    const requestParams = [
+    public const requestParams = [
         'email', 'school_identifier',
         'first_name', 'last_name',
         'confirm_password', 'password',
@@ -37,8 +40,8 @@ class RegisterUserDto
             $registerDto->schoolIdentifier = $_POST['school_identifier'];
             $registerDto->startDate = $_POST['start_date'];
             $registerDto->entryDate = $_POST['entry_date'];
-        } catch (\TypeError $e) {
-            throw new \Exception("Error on reading the input fields! " . $e->getMessage());
+        } catch (TypeError $e) {
+            throw new Exception("Error on reading the input fields! " . $e->getMessage());
         }
 
         return $registerDto;

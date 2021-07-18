@@ -11,7 +11,7 @@ class RidiculousPasswordValidator extends StrongPasswordValidator
     public function __construct()
     {
         parent::__construct();
-        $this->errorMessage = $this->errorMessage . ' And must not contain the lastname or the firstname!';
+        $this->errorMessage .= ' And must not contain the lastname or the firstname!';
     }
 
     protected function fails(RegisterUserDto $dto): bool
