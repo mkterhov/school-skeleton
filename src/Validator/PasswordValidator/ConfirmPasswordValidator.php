@@ -5,16 +5,12 @@ namespace School\Validator\PasswordValidator;
 
 
 use School\Dto\RegisterUserDto;
+use School\Validator\AbstractValidator;
 use School\Validator\ValidatorInterface;
 
-class ConfirmPasswordValidator implements ValidatorInterface
+class ConfirmPasswordValidator extends AbstractValidator
 {
-    protected string $errorMessage;
-
-    /**
-     * @inheritDoc
-     */
-    public function validate(RegisterUserDto $dto): bool
+    protected function fails(RegisterUserDto $dto): bool
     {
         return $dto->password == $dto->confirmPassword;
     }

@@ -5,13 +5,10 @@ namespace School\Validator\PasswordValidator;
 
 
 use School\Dto\RegisterUserDto;
-use School\Validator\ValidatorInterface;
+use School\Validator\AbstractValidator;
 
-class StrongPasswordValidator implements ValidatorInterface
+class StrongPasswordValidator extends AbstractValidator
 {
-    protected string $pattern;
-    protected string $errorMessage;
-
     /**
      * WeakPasswordValidator constructor.
      */
@@ -20,10 +17,7 @@ class StrongPasswordValidator implements ValidatorInterface
         $this->pattern = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])\S{10,}$/';
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function validate(RegisterUserDto $dto): bool
+    protected function fails(RegisterUserDto $dto): bool
     {
         return preg_match($this->pattern, $dto->password) === 1;
     }

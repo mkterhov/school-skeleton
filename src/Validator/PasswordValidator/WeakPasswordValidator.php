@@ -5,16 +5,12 @@ namespace School\Validator\PasswordValidator;
 
 
 use School\Dto\RegisterUserDto;
+use School\Validator\AbstractValidator;
 use School\Validator\ValidatorInterface;
 
-class WeakPasswordValidator implements ValidatorInterface
+class WeakPasswordValidator extends AbstractValidator
 {
-    protected string $errorMessage;
-
-    /**
-     * @inheritDoc
-     */
-    public function validate(RegisterUserDto $dto): bool
+    protected function fails(RegisterUserDto $dto): bool
     {
         return strlen($dto->password) > 6;
     }

@@ -5,22 +5,17 @@ namespace School\Validator\EmailValidator;
 
 
 use School\Dto\RegisterUserDto;
+use School\Validator\AbstractValidator;
 use School\Validator\ValidatorInterface;
 
-class TeacherEmailValidator implements ValidatorInterface
+class TeacherEmailValidator extends AbstractValidator
 {
-    protected string $pattern;
-    protected string $errorMessage;
-
     public function __construct(string $provider)
     {
         $this->pattern = '/^(?<user>\w+)@(?<domain>' . $provider . '\.com)$/';
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function validate(RegisterUserDto $dto): bool
+    protected function fails(RegisterUserDto $dto): bool
     {
         return preg_match($this->pattern, $dto->email) === 1;
     }

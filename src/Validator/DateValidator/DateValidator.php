@@ -5,12 +5,12 @@ namespace School\Validator\DateValidator;
 
 
 use School\Dto\RegisterUserDto;
+use School\Validator\AbstractValidator;
 use School\Validator\ValidatorInterface;
 
-class DateValidator implements ValidatorInterface
+class DateValidator extends AbstractValidator
 {
     private int $dateDifferenceInDays;
-    protected string $errorMessage;
 
     /**
      * DateValidator constructor.
@@ -20,11 +20,11 @@ class DateValidator implements ValidatorInterface
         $this->dateDifferenceInDays = $dateDifferenceInDays;
     }
 
+
     /**
-     * @inheritDoc
      * @throws \Exception
      */
-    public function validate(RegisterUserDto $dto): bool
+    protected function fails(RegisterUserDto $dto): bool
     {
         $entryDate = new \DateTime($dto->entryDate);
         $startDate = new \DateTime($dto->startDate);

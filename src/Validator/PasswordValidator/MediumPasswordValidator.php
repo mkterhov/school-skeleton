@@ -5,12 +5,12 @@ namespace School\Validator\PasswordValidator;
 
 
 use School\Dto\RegisterUserDto;
+use School\Validator\AbstractValidator;
 use School\Validator\ValidatorInterface;
 
-class MediumPasswordValidator implements ValidatorInterface
+class MediumPasswordValidator extends AbstractValidator
 {
-    protected string $pattern;
-    protected string $errorMessage;
+
 
     /**
      * WeakPasswordValidator constructor.
@@ -24,6 +24,10 @@ class MediumPasswordValidator implements ValidatorInterface
      * @inheritDoc
      */
     public function validate(RegisterUserDto $dto): bool
+    {
+    }
+
+    protected function fails(RegisterUserDto $dto): bool
     {
         return preg_match($this->pattern, $dto->password) === 1;
     }

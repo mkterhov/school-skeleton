@@ -5,22 +5,19 @@ namespace School\Validator\NameValidator;
 
 
 use School\Dto\RegisterUserDto;
-use School\Validator\ValidatorInterface;
+use School\Validator\AbstractValidator;
 
-class LastNameValidator implements ValidatorInterface
+class LastNameValidator extends AbstractValidator
 {
-    protected string $pattern;
-    protected string $errorMessage;
-
     /**
      * FirstNameValidator constructor.
      */
     public function __construct()
     {
-        $this->pattern ='/^\p{Lu}([\p{L}-]+)$/';
+        $this->pattern = '/^\p{Lu}([\p{L}-]+)$/';
     }
 
-    public function validate(RegisterUserDto $dto): bool
+    protected function fails(RegisterUserDto $dto): bool
     {
         //validates that the lastname starts with uppercase
         //and allows it to be hyphened

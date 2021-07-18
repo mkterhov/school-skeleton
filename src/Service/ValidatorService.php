@@ -5,14 +5,6 @@ namespace School\Service;
 
 
 use School\Dto\RegisterUserDto;
-use School\Validator\DateValidator\DateValidator;
-use School\Validator\EmailValidator\EmailValidatorFactory;
-use School\Validator\IdentifierValidator\IdentifierValidatorFactory;
-use School\Validator\NameValidator\FirstNameValidator;
-use School\Validator\NameValidator\LastNameValidator;
-use School\Validator\PasswordValidator\ConfirmPasswordValidator;
-use School\Validator\PasswordValidator\PasswordValidatorFactory;
-use School\Validator\UserType;
 use School\Validator\ValidatorCollection;
 
 class ValidatorService implements ValidatorServiceInterface
