@@ -6,7 +6,6 @@ namespace School\Validator\EmailValidator;
 
 use School\Dto\RegisterUserDto;
 use School\Validator\AbstractValidator;
-use School\Validator\ValidatorInterface;
 
 class TeacherEmailValidator extends AbstractValidator
 {

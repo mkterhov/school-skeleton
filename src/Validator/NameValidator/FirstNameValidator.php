@@ -6,7 +6,6 @@ namespace School\Validator\NameValidator;
 
 use School\Dto\RegisterUserDto;
 use School\Validator\AbstractValidator;
-use School\Validator\ValidatorInterface;
 
 class FirstNameValidator extends AbstractValidator
 {
