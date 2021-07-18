@@ -14,7 +14,7 @@ class LastNameValidator extends AbstractValidator
      */
     public function __construct()
     {
-        $this->errorMessage = "Last name must start with a capital letter, have two parts separted by a '-'!";
+        $this->errorMessage = "Last name must start with a capital letter, have two parts separated by a '-'!";
 
         $this->pattern = '/^\p{Lu}([\p{L}-]+)$/';
     }
