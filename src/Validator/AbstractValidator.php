@@ -10,6 +10,7 @@ abstract class AbstractValidator implements ValidatorInterface
 {
     protected string $pattern;
     protected string $errorMessage;
+    protected string $fieldName;
 
     /**
      * @inheritDoc
@@ -23,4 +24,9 @@ abstract class AbstractValidator implements ValidatorInterface
     }
 
     abstract protected function fails(RegisterUserDto $dto): bool;
+
+    public function getFieldName(): string
+    {
+        return $this->fieldName;
+    }
 }

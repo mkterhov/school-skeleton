@@ -11,7 +11,8 @@ class WeakPasswordValidator extends AbstractValidator
 {
     public function __construct()
     {
-        $this->errorMessage= 'Password must have a minimum of 6 characters!';
+        $this->fieldName = 'password';
+        $this->errorMessage = 'Password must have a minimum of 6 characters!';
         $this->pattern = '/^(?=[A-Z]+)\w{7,}/';
     }
 

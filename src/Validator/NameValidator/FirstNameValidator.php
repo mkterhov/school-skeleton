@@ -11,8 +11,8 @@ class FirstNameValidator extends AbstractValidator
 {
     public function __construct()
     {
+        $this->fieldName = 'first_name';
         $this->errorMessage = "First name must start with a capital letter!";
-
         $this->pattern = '/^\p{Lu}\p{L}+$/';
     }
 

@@ -9,9 +9,12 @@ use School\Validator\AbstractValidator;
 
 class ConfirmPasswordValidator extends AbstractValidator
 {
+    public string $fieldName;
+
     public function __construct()
     {
-        $this->errorMessage= 'Confirm password and the password differ!!';
+        $this->fieldName = 'confirm_password';
+        $this->errorMessage = 'Confirm password and the password differ!!';
         $this->pattern = '/^(?=[A-Z]+)\w{7,}/';
     }
 

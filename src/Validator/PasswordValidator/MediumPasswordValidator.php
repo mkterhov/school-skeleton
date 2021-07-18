@@ -11,7 +11,8 @@ class MediumPasswordValidator extends AbstractValidator
 {
     public function __construct()
     {
-        $this->errorMessage= 'Password must have a minimum of 8 characters with at least one upper case letter!';
+        $this->fieldName = 'password';
+        $this->errorMessage = 'Password must have a minimum of 8 characters with at least one upper case letter!';
         $this->pattern = '/^(?=[A-Z]+)\w{7,}/';
     }
 

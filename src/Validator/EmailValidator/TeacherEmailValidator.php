@@ -11,7 +11,8 @@ class TeacherEmailValidator extends AbstractValidator
 {
     public function __construct(string $provider)
     {
-        $this->errorMessage = "Teacher's email must be valid,, providers accepted: %s" . $provider;
+        $this->fieldName = "email";
+        $this->errorMessage = "Teacher's email must be valid,, providers accepted: " . $provider;
         $this->pattern = '/^(?<user>\w+)@(?<domain>' . $provider . '\.com)$/';
     }
 

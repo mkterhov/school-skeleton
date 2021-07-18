@@ -11,4 +11,7 @@ interface ValidatorInterface
      * @throws ValidationException
      */
     public function validate(RegisterUserDto $dto): bool;
+
+    //todo do the same with composition e.g. class that is FieldValidator and uses ValidatorInterface
+    public function getFieldName(): string;
 }

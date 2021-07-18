@@ -27,11 +27,12 @@ class RegisterUser
     public function registerUser(RegisterUserDto $dto): array
     {
         $validatorService = new RegisterUserValidatorService($dto, $this->validators);
+        header('Content-Type: application/json');
         if (!$validatorService->passes()) {
             header('HTTP/1.1 422 Unprocessable Entity');
-            return ['message' => 'Unable to create user!', 'errors' => $validatorService->validated()];
+            return ['success' => 0, 'message' => 'Unable to create user!', 'errors' => $validatorService->validated()];
         }
         header('HTTP/1.1 201 Created');
-        return ['success' => ['message' => 'User created']];
+        return ['success' => 1, 'message' => 'User created'];
     }
 }

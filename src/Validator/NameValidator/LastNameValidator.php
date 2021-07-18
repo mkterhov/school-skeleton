@@ -9,13 +9,10 @@ use School\Validator\AbstractValidator;
 
 class LastNameValidator extends AbstractValidator
 {
-    /**
-     * FirstNameValidator constructor.
-     */
     public function __construct()
     {
-        $this->errorMessage = "Last name must start with a capital letter, have two parts separated by a '-'!";
-
+        $this->fieldName = 'last_name';
+        $this->errorMessage = "Last name must start with a capital letter!";
         $this->pattern = '/^\p{Lu}([\p{L}-]+)$/';
     }
 

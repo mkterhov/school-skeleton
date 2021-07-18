@@ -29,7 +29,7 @@ class RegisterUserValidatorService implements ValidatorServiceInterface
             try {
                 $validator->validate($this->userDto);
             } catch (ValidationException $exception) {
-                $validationErrorMessages[] = $exception->getMessage();
+                $validationErrorMessages[] = [$validator->getFieldName() => $exception->getMessage()];
             }
         }
         return $validationErrorMessages;
