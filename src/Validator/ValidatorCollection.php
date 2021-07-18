@@ -19,7 +19,6 @@ class ValidatorCollection implements \Iterator, \Countable
     {
         array_push($this->validators, $validator);
         return new self($this->validators);
-
     }
 
     public function removeValidator(ValidatorInterface $validator): self
@@ -33,7 +32,7 @@ class ValidatorCollection implements \Iterator, \Countable
         return new self($this->validators);
     }
 
-    public function current()
+    public function current(): ValidatorInterface
     {
         return current($this->validators);
     }
@@ -49,7 +48,7 @@ class ValidatorCollection implements \Iterator, \Countable
 
     }
 
-    public function valid()
+    public function valid(): bool
     {
         return key($this->validators) !== null;
     }

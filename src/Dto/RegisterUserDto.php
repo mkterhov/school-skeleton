@@ -4,6 +4,12 @@ namespace School\Dto;
 
 class RegisterUserDto
 {
+    const requestParams = [
+        'email', 'school_identifier',
+        'first_name', 'last_name',
+        'confirm_password', 'password',
+        'start_date', 'entry_date', 'is_teacher'
+    ];
     public string $schoolIdentifier;
     public string $email;
     public string $firstName;
@@ -36,5 +42,10 @@ class RegisterUserDto
         }
 
         return $registerDto;
+    }
+
+    public static function getParamsRequired(): array
+    {
+        return self::$requestParams;
     }
 }

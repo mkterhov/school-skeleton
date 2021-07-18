@@ -22,9 +22,14 @@ class RegisterUser
 
     /**
      * Returns a success array or an error message array. Also saves in the database.
+     * @throws \Exception
      */
     public function registerUser(RegisterUserDto $dto): array
     {
+        $validatorService = new ValidatorService($dto, $this->validators);
+        if (!$validatorService->passes()) {
+            return ['error' => ['message' => 'User not created']];
+        }
         return ['success' => ['message' => 'User created']];
     }
 }
