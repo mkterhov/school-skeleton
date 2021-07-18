@@ -10,6 +10,7 @@ use School\Validator\ValidatorInterface;
 class StrongPasswordValidator implements ValidatorInterface
 {
     protected string $pattern;
+    protected string $errorMessage;
 
     /**
      * WeakPasswordValidator constructor.

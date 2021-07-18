@@ -10,6 +10,7 @@ use School\Validator\ValidatorInterface;
 class MediumPasswordValidator implements ValidatorInterface
 {
     protected string $pattern;
+    protected string $errorMessage;
 
     /**
      * WeakPasswordValidator constructor.

@@ -10,7 +10,8 @@ use School\Validator\ValidatorInterface;
 class TeacherIdentifierValidator implements ValidatorInterface
 {
     private array $array = ["TEA", "TEACH", "TEACHER"];
-    private string $pattern;
+    protected string $pattern;
+    protected string $errorMessage;
 
     public function __construct()
     {

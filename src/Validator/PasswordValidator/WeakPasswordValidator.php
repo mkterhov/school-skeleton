@@ -9,6 +9,8 @@ use School\Validator\ValidatorInterface;
 
 class WeakPasswordValidator implements ValidatorInterface
 {
+    protected string $errorMessage;
+
     /**
      * @inheritDoc
      */

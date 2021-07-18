@@ -10,6 +10,7 @@ use School\Validator\ValidatorInterface;
 class DateValidator implements ValidatorInterface
 {
     private int $dateDifferenceInDays;
+    protected string $errorMessage;
 
     /**
      * DateValidator constructor.

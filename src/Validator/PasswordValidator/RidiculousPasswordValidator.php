@@ -8,6 +8,7 @@ use School\Dto\RegisterUserDto;
 
 class RidiculousPasswordValidator extends StrongPasswordValidator
 {
+
     //switch to preg later on
     public function validate(RegisterUserDto $dto): bool
     {

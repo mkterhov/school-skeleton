@@ -10,6 +10,7 @@ use School\Validator\ValidatorInterface;
 class TeacherEmailValidator implements ValidatorInterface
 {
     protected string $pattern;
+    protected string $errorMessage;
 
     public function __construct(string $provider)
     {

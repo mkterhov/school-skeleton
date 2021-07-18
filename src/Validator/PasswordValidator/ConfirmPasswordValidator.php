@@ -9,6 +9,7 @@ use School\Validator\ValidatorInterface;
 
 class ConfirmPasswordValidator implements ValidatorInterface
 {
+    protected string $errorMessage;
 
     /**
      * @inheritDoc
