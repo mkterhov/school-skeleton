@@ -8,9 +8,6 @@ use School\Dto\RegisterUserDto;
 
 class RidiculousPasswordValidator extends StrongPasswordValidator
 {
-
-    //switch to preg later on
-
     public function __construct()
     {
         parent::__construct();

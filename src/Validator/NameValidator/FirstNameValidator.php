@@ -9,9 +9,6 @@ use School\Validator\AbstractValidator;
 
 class FirstNameValidator extends AbstractValidator
 {
-    /**
-     * FirstNameValidator constructor.
-     */
     public function __construct()
     {
         $this->errorMessage = "First name must start with a capital letter!";

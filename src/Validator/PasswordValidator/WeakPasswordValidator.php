@@ -10,7 +10,6 @@ use School\Validator\ValidatorInterface;
 
 class WeakPasswordValidator extends AbstractValidator
 {
-
     public function __construct()
     {
         $this->errorMessage= 'Password must have a minimum of 6 characters!';

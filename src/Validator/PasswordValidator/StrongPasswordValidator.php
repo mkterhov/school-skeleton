@@ -9,9 +9,6 @@ use School\Validator\AbstractValidator;
 
 class StrongPasswordValidator extends AbstractValidator
 {
-    /**
-     * WeakPasswordValidator constructor.
-     */
     public function __construct()
     {
         $this->errorMessage= 'Password must have 10 characters, one upper case letter, one digit and at one non-alphanumeric character!';

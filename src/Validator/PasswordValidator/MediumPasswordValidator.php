@@ -9,9 +9,6 @@ use School\Validator\AbstractValidator;
 
 class MediumPasswordValidator extends AbstractValidator
 {
-    /**
-     * WeakPasswordValidator constructor.
-     */
     public function __construct()
     {
         $this->errorMessage= 'Password must have a minimum of 8 characters with at least one upper case letter!';

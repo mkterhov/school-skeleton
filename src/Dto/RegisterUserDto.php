@@ -43,9 +43,4 @@ class RegisterUserDto
 
         return $registerDto;
     }
-
-    public static function getParamsRequired(): array
-    {
-        return self::$requestParams;
-    }
 }

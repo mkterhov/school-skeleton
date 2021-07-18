@@ -14,7 +14,6 @@ class ValidatorService implements ValidatorServiceInterface
     protected RegisterUserDto $userDto;
 
     /**
-     * AbstractRegisterUserValidatorService constructor.
      * @throws \Exception
      */
     public function __construct(RegisterUserDto $userDto, ValidatorCollection $validatorCollection)

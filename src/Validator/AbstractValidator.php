@@ -13,7 +13,7 @@ abstract class AbstractValidator implements ValidatorInterface
 
     /**
      * @inheritDoc
-     * @throws \School\Validator\ValidationException
+     * @throws ValidationException
      */
     public function validate(RegisterUserDto $dto): bool
     {
