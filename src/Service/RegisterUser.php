@@ -28,7 +28,7 @@ class RegisterUser
     {
         $validatorService = new RegisterUserValidatorService($dto, $this->validators);
         if (!$validatorService->passes()) {
-            header('HTTP/1.1 400 Bad Method');
+            header('HTTP/1.1 422 Unprocessable Entity');
             return ['message' => 'Unable to create user!', 'errors' => $validatorService->validated()];
         }
         header('HTTP/1.1 201 Created');
