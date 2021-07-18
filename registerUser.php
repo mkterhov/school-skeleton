@@ -41,11 +41,9 @@ try {
     $registerUser = new RegisterUser($userDtoValidators, $userRepository);
 
     //Send back the error/succes response in JSON format
-    header('HTTP/1.1 201 Created');
     echo json_encode($registerUser->registerUser($userDto));
-
 } catch (Exception $e) {
-    header('HTTP/1.1 500 Bad Method');
+    header('HTTP/1.1 500 Internal Server Error');
     $errorMessage = 'Whoops! ' . $e->getMessage();
     echo json_encode(['error' => ['message' => $errorMessage]]);
     exit(0);

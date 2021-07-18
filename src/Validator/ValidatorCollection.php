@@ -24,10 +24,10 @@ class ValidatorCollection implements \Iterator, \Countable
     public function removeValidator(ValidatorInterface $validator): self
     {
         if (!in_array($validator, $this->validators, true)) {
-            return new self();
+            return $this;
         }
         array_filter($this->validators, function ($val) use ($validator) {
-            return !($validator === $val);
+            return $validator === $val;
         });
         return new self($this->validators);
     }

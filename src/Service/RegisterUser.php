@@ -28,8 +28,11 @@ class RegisterUser
     {
         $validatorService = new ValidatorService($dto, $this->validators);
         if (!$validatorService->passes()) {
-            return ['error' => ['message' => 'User not created']];
+            header('HTTP/1.1 400 Bad Method');
+
+            return ['message' => 'Unable to create user!', 'errors' => $validatorService->validated()];
         }
+        header('HTTP/1.1 201 Created');
         return ['success' => ['message' => 'User created']];
     }
 }

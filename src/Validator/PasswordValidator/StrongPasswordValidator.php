@@ -14,6 +14,7 @@ class StrongPasswordValidator extends AbstractValidator
      */
     public function __construct()
     {
+        $this->errorMessage= 'Password must have 10 characters, one upper case letter, one digit and at one non-alphanumeric character!';
         $this->pattern = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])\S{10,}$/';
     }
 
