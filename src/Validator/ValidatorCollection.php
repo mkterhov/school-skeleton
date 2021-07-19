@@ -2,7 +2,10 @@
 
 namespace School\Validator;
 
-class ValidatorCollection implements \Iterator, \Countable
+use Countable;
+use Iterator;
+
+class ValidatorCollection implements Iterator, Countable
 {
     private array $validators;
 

@@ -14,7 +14,7 @@ class ConfirmPasswordValidator extends AbstractValidator
     public function __construct()
     {
         $this->fieldName = 'confirm_password';
-        $this->errorMessage = 'Confirm password and the password differ!!';
+        $this->errorMessage = 'Confirm password and the password must be identical!!';
         $this->pattern = '/^(?=[A-Z]+)\w{7,}/';
     }
 

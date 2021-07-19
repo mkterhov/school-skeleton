@@ -17,7 +17,7 @@ class DateValidator extends AbstractValidator
     public function __construct(int $dateDifferenceInDays)
     {
         $this->fieldName = 'date';
-        $this->errorMessage = sprintf('Dates must be valid and start date must be %d days after entry date! ', $dateDifferenceInDays);
+        $this->errorMessage = sprintf('Dates must be valid and start date must be at least %d days after entry date! ', $dateDifferenceInDays);
         $this->dateDifferenceInDays = $dateDifferenceInDays;
     }
 

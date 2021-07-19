@@ -12,7 +12,7 @@ class LastNameValidator extends AbstractValidator
     public function __construct()
     {
         $this->fieldName = 'last_name';
-        $this->errorMessage = "Last name must start with a capital letter!";
+        $this->errorMessage = "Last name must start with an uppercase letter and can only contain '-'!";
         $this->pattern = '/^\p{Lu}([\p{L}-]+)$/';
     }
 

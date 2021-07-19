@@ -24,7 +24,11 @@ if (!empty($paramsMissing)) {
     header('Content-Type: application/json');
     header('HTTP/1.1 400 Bad Method');
     $errorMessage = sprintf('Provide the missing fields: %s', implode(', ', $paramsMissing));
-    echo json_encode(['error' => ['message' => $errorMessage]], JSON_THROW_ON_ERROR);
+    try {
+        echo json_encode(['error' => ['message' => $errorMessage]], JSON_THROW_ON_ERROR);
+    } catch (JsonException $e) {
+
+    }
     exit(0);
 }
 try {
@@ -40,7 +44,7 @@ try {
     $userDtoValidators = RegisterDtoValidatorCollection::createRegisterDtoValidatorCollection($userDto, $configuration);
     $registerUser = new RegisterUser($userDtoValidators, $userRepository);
 
-    //Send back the error/succes response in JSON format
+    //Send back the error/success response in JSON format
     echo json_encode($registerUser->registerUser($userDto), JSON_THROW_ON_ERROR);
 } catch (Exception $e) {
     header('Content-Type: application/json');

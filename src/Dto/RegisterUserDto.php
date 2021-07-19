@@ -31,7 +31,6 @@ class RegisterUserDto
         $registerDto = new self();
 
         try {
-
             $registerDto->isTeacher = filter_input(INPUT_POST, 'is_teacher', FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
             $registerDto->firstName = $_POST['first_name'];
             $registerDto->email = $_POST['email'];

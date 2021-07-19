@@ -14,7 +14,7 @@ class TeacherIdentifierValidator extends AbstractValidator
     public function __construct()
     {
         $this->fieldName = "school_identifier";
-        $this->errorMessage = sprintf("Teacher id must start with %s, have 4 digits in the middle, and 1-3 alphanums in the end!", implode(',', $this->array));
+        $this->errorMessage = sprintf("Teacher ids must start with %s, have 4 digits in the middle, and 1-3 alphanums in the end!", implode(',', $this->array));
         $this->pattern = '/^(' . implode('|', $this->array) . ')-\d{4}-\w{1,3}$/';
     }
 
