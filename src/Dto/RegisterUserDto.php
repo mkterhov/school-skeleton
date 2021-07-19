@@ -21,7 +21,7 @@ class RegisterUserDto
     public string $password;
     public string $entryDate;
     public string $startDate;
-    public bool $isTeacher;
+    public ?bool $isTeacher;
 
     /**
      * @throws \Exception
@@ -33,7 +33,6 @@ class RegisterUserDto
         try {
 
             $registerDto->isTeacher = filter_input(INPUT_POST, 'is_teacher', FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-            var_dump($registerDto->isTeacher);
             $registerDto->firstName = $_POST['first_name'];
             $registerDto->email = $_POST['email'];
             $registerDto->lastName = $_POST['last_name'];

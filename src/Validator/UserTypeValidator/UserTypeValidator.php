@@ -17,6 +17,9 @@ class UserTypeValidator extends AbstractValidator
 
     protected function fails(RegisterUserDto $dto): bool
     {
-        return is_null($dto->isTeacher);
+        if(!is_bool($dto->isTeacher)) {
+            return true;
+        }
+        return false;
     }
 }
