@@ -20,6 +20,6 @@ class LastNameValidator extends AbstractValidator
     {
         //validates that the lastname starts with uppercase
         //and allows it to be hyphened
-        return preg_match($this->pattern, $dto->lastName) === 1;
+        return !(preg_match($this->pattern, $dto->lastName) === 1);
     }
 }

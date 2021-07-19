@@ -12,6 +12,7 @@ use School\Validator\NameValidator\LastNameValidator;
 use School\Validator\PasswordValidator\ConfirmPasswordValidator;
 use School\Validator\PasswordValidator\PasswordValidatorFactory;
 use School\Validator\UserType;
+use School\Validator\UserTypeValidator\UserTypeValidator;
 use School\Validator\ValidatorCollection;
 
 class RegisterDtoValidatorCollection
@@ -22,6 +23,7 @@ class RegisterDtoValidatorCollection
     public static function createRegisterDtoValidatorCollection(RegisterUserDto $userDto, array $config): ValidatorCollection
     {
         $validatorCollection = new ValidatorCollection();
+        $validatorCollection->addValidator(new UserTypeValidator());
         $userType = $userDto->isTeacher ? UserType::TEACHER : UserType::STUDENT;
 
         $validatorCollection->addValidator(new ConfirmPasswordValidator());

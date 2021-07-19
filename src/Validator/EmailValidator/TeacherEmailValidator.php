@@ -13,11 +13,11 @@ class TeacherEmailValidator extends AbstractValidator
     {
         $this->fieldName = "email";
         $this->errorMessage = "Teacher's email must be valid,, providers accepted: " . $provider;
-        $this->pattern = '/^(?<user>\w+)@(?<domain>' . $provider . '\.com)$/';
+        $this->pattern = '/^(?<address>\w+)@(?<domain>' . $provider . '\.com)$/';
     }
 
     protected function fails(RegisterUserDto $dto): bool
     {
-        return preg_match($this->pattern, $dto->email) === 1;
+        return !(preg_match($this->pattern, $dto->email) === 1);
     }
 }

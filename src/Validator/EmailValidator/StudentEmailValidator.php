@@ -18,6 +18,6 @@ class StudentEmailValidator extends AbstractValidator
 
     public function fails(RegisterUserDto $dto): bool
     {
-        return preg_match($this->pattern, $dto->email) === 1;
+        return !(preg_match($this->pattern, $dto->email) === 1);
     }
 }

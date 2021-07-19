@@ -30,9 +30,9 @@ class RegisterUser
         header('Content-Type: application/json');
         if (!$validatorService->passes()) {
             header('HTTP/1.1 422 Unprocessable Entity');
-            return ['success' => 0, 'message' => 'Unable to create user!', 'errors' => $validatorService->validated()];
+            return ['success' => false, 'message' => 'Unable to create user!', 'errors' => $validatorService->validated()];
         }
         header('HTTP/1.1 201 Created');
-        return ['success' => 1, 'message' => 'User created'];
+        return ['success' => true, 'message' => 'User created'];
     }
 }

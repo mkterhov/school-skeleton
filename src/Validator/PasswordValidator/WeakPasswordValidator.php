@@ -18,6 +18,6 @@ class WeakPasswordValidator extends AbstractValidator
 
     protected function fails(RegisterUserDto $dto): bool
     {
-        return strlen($dto->password) > 6;
+        return !(strlen($dto->password) > 6);
     }
 }

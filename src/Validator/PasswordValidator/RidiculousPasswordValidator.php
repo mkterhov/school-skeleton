@@ -16,7 +16,7 @@ class RidiculousPasswordValidator extends StrongPasswordValidator
 
     protected function fails(RegisterUserDto $dto): bool
     {
-        return parent::fails($dto) && !$this->containsLastNameFirstName($dto->password, $dto->firstName, $dto->lastName);
+        return !(!parent::fails($dto) && !$this->containsLastNameFirstName($dto->password, $dto->firstName, $dto->lastName));
     }
 
     private function containsLastNameFirstName($password, $firstName, $lastName): bool

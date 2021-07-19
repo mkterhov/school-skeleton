@@ -18,6 +18,6 @@ class FirstNameValidator extends AbstractValidator
 
     protected function fails(RegisterUserDto $dto): bool
     {
-        return preg_match($this->pattern, $dto->firstName) === 1;
+        return !(preg_match($this->pattern, $dto->firstName) === 1);
     }
 }

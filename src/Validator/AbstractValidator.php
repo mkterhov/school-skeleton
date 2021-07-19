@@ -17,7 +17,7 @@ abstract class AbstractValidator implements ValidatorInterface
      */
     public function validate(RegisterUserDto $dto): bool
     {
-        if (!$this->fails($dto)) {
+        if ($this->fails($dto)) {
             throw new ValidationException($this->errorMessage);
         }
         return true;

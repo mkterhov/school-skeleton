@@ -20,6 +20,6 @@ class ConfirmPasswordValidator extends AbstractValidator
 
     protected function fails(RegisterUserDto $dto): bool
     {
-        return $dto->password === $dto->confirmPassword;
+        return !($dto->password === $dto->confirmPassword);
     }
 }
