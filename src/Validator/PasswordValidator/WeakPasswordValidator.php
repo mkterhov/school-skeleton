@@ -13,7 +13,7 @@ class WeakPasswordValidator extends AbstractValidator
     {
         $this->fieldName = 'password';
         $this->errorMessage = 'Password must have a minimum of 6 characters!';
-        $this->pattern = '/^(?=[A-Z]+)\w{7,}/';
+        $this->pattern = '/(?=.[A-Z]*.)\w{6,}/';
     }
 
     protected function fails(RegisterUserDto $dto): bool

@@ -15,7 +15,7 @@ class PasswordValidatorFactory
     public static function createPasswordValidator(string $strengthLevel): ValidatorInterface
     {
 
-        $className = "School\\Validator\\PasswordValidator\\" . ucfirst(strtolower($strengthLevel)) . PasswordStrength::PASSWORD_VALIDATOR;
+        $className = "School\\Validator\\PasswordValidator\\" . PasswordStrength::STRENGTH_LEVEL[$strengthLevel] . PasswordStrength::PASSWORD_VALIDATOR;
         if (class_exists($className) === false) {
             throw new Exception("Class $className not found.");
         }

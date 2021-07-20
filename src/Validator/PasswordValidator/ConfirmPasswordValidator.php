@@ -15,11 +15,13 @@ class ConfirmPasswordValidator extends AbstractValidator
     {
         $this->fieldName = 'confirm_password';
         $this->errorMessage = 'Confirm password and the password must be identical!!';
-        $this->pattern = '/^(?=[A-Z]+)\w{7,}/';
+        $this->pattern = '//';
     }
 
     protected function fails(RegisterUserDto $dto): bool
     {
+        $this->pattern = '/' . $dto->password . '/';
+
         return !($dto->password === $dto->confirmPassword);
     }
 }
