@@ -9,8 +9,6 @@ use School\Validator\AbstractValidator;
 
 class ConfirmPasswordValidator extends AbstractValidator
 {
-    public string $fieldName;
-
     public function __construct()
     {
         $this->fieldName = 'confirm_password';
